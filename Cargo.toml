@@ -1,0 +1,23 @@
+[package]
+name = "kamishibai"
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.97.1"
+description = "An open source, AI-first game engine for 2.5HD games (pixel-art sprites in 3D dioramas), built on Bevy."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/nicholasricci/kamishibai"
+readme = "README.md"
+keywords = ["gamedev", "game-engine", "bevy", "pixel-art", "2-5d"]
+categories = ["game-engines", "game-development"]
+exclude = [".github/", "CLAUDE.md", "docs/"]
+
+[dependencies]
+bevy = "0.20.1"
+
+# Bevy is slow in plain debug builds: optimize dependencies, keep our code
+# quick to compile. See https://bevy.org/learn/quick-start/getting-started/setup/
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
